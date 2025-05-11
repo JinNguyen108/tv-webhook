@@ -14,11 +14,12 @@ def tv_alert():
             with open("signals.txt", "r") as f:
                 lines = f.read().splitlines()
 
-        # Thêm dòng mới vào đầu danh sách
-        lines.insert(0, data)
+        # Thêm dòng mới vào cuối danh sách
+        lines.append(data)
 
-        # Chỉ giữ lại 6 dòng gần nhất
-        lines = lines[:6]
+        # Nếu số dòng > 6, loại bỏ dòng đầu tiên (dòng cũ nhất)
+        if len(lines) > 6:
+            lines = lines[-6:]  # giữ lại 6 dòng cuối cùng
 
         # Ghi lại file
         with open("signals.txt", "w") as f:
