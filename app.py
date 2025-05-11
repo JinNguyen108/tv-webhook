@@ -17,8 +17,8 @@ def tv_alert():
         # Thêm dòng mới vào đầu danh sách
         lines.insert(0, data)
 
-        # Chỉ giữ lại 5 dòng gần nhất
-        lines = lines[:5]
+        # Chỉ giữ lại 6 dòng gần nhất
+        lines = lines[:6]
 
         # Ghi lại file
         with open("signals.txt", "w") as f:
