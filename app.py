@@ -10,8 +10,8 @@ def tv_alert():
 
         # Đọc các dòng hiện có nếu có file
         lines = []
-        if os.path.exists("signals.txt"):
-            with open("signals.txt", "r") as f:
+        if os.path.exists("signals_new.txt"):
+            with open("signals_new.txt", "r") as f:
                 lines = f.read().splitlines()
 
         # Thêm dòng mới vào cuối danh sách
@@ -22,7 +22,7 @@ def tv_alert():
             lines = lines[-6:]  # giữ lại 6 dòng cuối cùng
 
         # Ghi lại file
-        with open("signals.txt", "w") as f:
+        with open("signals_new.txt", "w") as f:
             f.write('\n'.join(lines))
 
         return "Signal received", 200
@@ -30,6 +30,6 @@ def tv_alert():
         return str(e), 500
 
 
-@app.route('/signals.txt', methods=['GET'])
+@app.route('/signals_new.txt', methods=['GET'])
 def get_signals():
-    return send_file("signals.txt", mimetype='text/plain')
+    return send_file("signals_new.txt", mimetype='text/plain')
